@@ -25,7 +25,7 @@ function WebinarAdminNavigation() {
           }`}
           onClick={() => handleActive("user 1")}
         >
-          User 1
+          User
         </button>
         <button
           className={`ir-ws-navigation-button ir-ws-navigation-create-webinar ${
@@ -33,7 +33,7 @@ function WebinarAdminNavigation() {
           }`}
           onClick={() => handleActive("user 2")}
         >
-          User 2
+          User
         </button>
       </div>
       <div className="ir-ws-navigation">
