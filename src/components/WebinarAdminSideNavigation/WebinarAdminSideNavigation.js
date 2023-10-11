@@ -11,7 +11,7 @@ function WebinarAdminSideNavigation() {
   return (
     <div className="ir-ws-flex flex-column ir-ws-align-center ir-ws-navigation-main-box  ir-ws-width-25">
       <img
-        className="ir-ws-position-absolute ir-ws-logo"
+        className="ir-ws-position-absolute ir-ws-admin-navigation-logo"
         src={require("../../assets/images/webinarLogo.png")}
         alt="webinar logo"
       />
