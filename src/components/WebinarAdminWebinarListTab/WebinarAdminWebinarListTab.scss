@@ -1,9 +1,9 @@
-.WebinerListBox {
+.ir-ws-webinar-admin-list-box {
     width: 100%;
     background-color: #d9d9d9;
     height: 570px;
     border-radius: 0px 20px 20px 20px;
-    .WebinerList {
+    .ir-we-webinar-list  {
       background: #ffffff;
       width: 99%;
       margin: 10px;
@@ -11,14 +11,14 @@
       border-radius: 10px;
     }
   }
-  .WebinerListItems {
-    .WebinarListHeading {
+  .ir-ws-webinar-list-items{
+    .ir-ws-webinar-list-heading {
       margin-left: 15px;
       font-weight: 700;
     }
-    .buttons {
+    .ir-ws-webinar-list-buttons {
       width: 150px;
-      button {
+      .ir-ws-webinar-list-button {
         margin-top: 10px;
         height: 40px;
         margin-left: 10px;
@@ -30,13 +30,11 @@
     }
   }
 
-   .WebinerList{
 
-    .arrow {
+    .ir-ws-webinar-uparrow {
         right: 20px;
         top: 15px;
         cursor: pointer;
         }
-  }
 
   

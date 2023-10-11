@@ -11,8 +11,8 @@ const WebinarAdminContent = () => {
   const handleTabChange = (index) => {
       setIsToggle(index);
   };
-  return <div className='container'>
-  <p className='webinarText'>Webinar</p>
+  return <div className='ir-ws-webiner-admin-container ir-ws-position-relative'>
+  <p className='ir-ws-webiner-admin-text '>Webinar</p>
   <WebinarAdminCustomTab isToggle={isToggle} onTabChange={handleTabChange} />
   {isToggle === 1 ? <WebinarAdminCreateWebinarTab /> : null}
  {isToggle === 2 ? <WebinarAdminWebinarListTab /> : null}
