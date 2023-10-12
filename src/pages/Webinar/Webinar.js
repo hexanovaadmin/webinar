@@ -1,11 +1,14 @@
 import React from 'react'
-// import WebinarAdminContent from '../../components/WebinarAdminContent/WebinarAdminContent'
 import WebinarAdminContent from '../../components/WebinarAdminContentWebinar/WebinarAdminContent'
+import WebinarAdminSideNavigation from "../../components/WebinarAdminSideNavigation/WebinarAdminSideNavigation";
 
-const Webinar = () => {
+function Webinar() {
   return (
-    <WebinarAdminContent/>
-  )
+    <div>
+      <WebinarAdminSideNavigation />
+      <WebinarAdminContent/>
+    </div>
+  );
 }
 
-export default Webinar
+export default Webinar;
