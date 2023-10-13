@@ -1,0 +1,12 @@
+[33m12e8c76[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/SideNavigation[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: checkout: moving from sideNavigation to main
+[33meb60cba[m HEAD@{1}: checkout: moving from main to sideNavigation
+[33m12e8c76[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/SideNavigation[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: reset: moving to 12e8c76
+[33meb60cba[m HEAD@{3}: reset: moving to HEAD
+[33meb60cba[m HEAD@{4}: checkout: moving from sideNavigation to main
+[33meb60cba[m HEAD@{5}: checkout: moving from main to sideNavigation
+[33meb60cba[m HEAD@{6}: pull origin main: Fast-forward
+[33ma798f27[m HEAD@{7}: checkout: moving from SideNavigation to main
+[33m12e8c76[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/SideNavigation[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{8}: commit: changed the class name
+[33mc40fc5a[m HEAD@{9}: commit: first commit
+[33ma798f27[m HEAD@{10}: checkout: moving from main to SideNavigation
+[33ma798f27[m HEAD@{11}: clone: from https://github.com/sunnyaditya07/webinar.git
