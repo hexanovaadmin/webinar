@@ -19,6 +19,7 @@ function WebinarAdminSideNavigation() {
           alt="logo"
         />
       </div>
+
       <div className="ir-ws-flex flex-column ir-ws-align-center ir-ws-admin-container">
         <div className="ir-ws-admin-text">Admin</div>
         <ul className="ir-margin-0 ir-ws-padding-0 ir-ws-flex flex-column ir-ws-admin-box ">
