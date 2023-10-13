@@ -7,6 +7,7 @@ function WebinarAdminSideNavigation() {
   function handleActive(button) {
     setActiveButton(button);
   }
+  //this comment is for branch-2
 
   const navigation = ["Webinar", "User 1", "User 2"];
 
