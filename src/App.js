@@ -1,10 +1,11 @@
 import React from "react";
-import Webinar from './pages/Webinar/Webinar'
-import './App.scss';
+import "./App.scss";
+import Webinar from "./pages/Webinar/Webinar";
+
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Webinar/>
     </div>
   );

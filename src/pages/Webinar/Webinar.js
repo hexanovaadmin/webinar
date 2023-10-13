@@ -1,11 +1,12 @@
 import React from 'react'
-// import WebinarAdminContent from '../../components/WebinarAdminContent/WebinarAdminContent'
-import WebinarAdminContent from '../../components/WebinarAdminContentWebinar/WebinarAdminContent'
+import UserAdminTab from '../../components/UserAdminTab/WebinarAdminContentWebinar/UserAdminTab'
+import '../../App.scss'
 
 const Webinar = () => {
   return (
-    <WebinarAdminContent/>
+    <UserAdminTab />
   )
 }
+
 
 export default Webinar
