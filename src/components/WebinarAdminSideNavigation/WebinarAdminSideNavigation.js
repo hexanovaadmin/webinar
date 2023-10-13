@@ -7,7 +7,7 @@ function WebinarAdminSideNavigation() {
   function handleActive(button) {
     setActiveButton(button);
   }
-  //Comment 2
+  //Comment 3
 
   const navigation = ["Webinar", "User 1", "User 2"];
 
