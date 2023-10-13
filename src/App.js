@@ -6,7 +6,7 @@ import Webinar from "./pages/Webinar/Webinar";
 function App() {
   return (
     <div>
-      <Webinar/>
+      <Webinar />
     </div>
   );
 }
