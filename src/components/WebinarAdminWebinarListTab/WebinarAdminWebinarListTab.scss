@@ -1,4 +1,5 @@
 .ir-ws-webinar-admin-list-box {
+    width: 100%;
     background-color: #d9d9d9;
     height: 570px;
     border-radius: 0px 20px 20px 20px;
@@ -8,12 +9,6 @@
       margin: 10px;
       margin-top: 13px;
       border-radius: 10px;
-      position: relative;
-    }
-    .ir-we-webinar-list.close{
-      max-height: 9%;
-      overflow: hidden;       
-      transition: max-height 0.3s ease, background-color 0.3s ease; 
     }
   }
   .ir-ws-webinar-list-items{
@@ -29,19 +24,17 @@
         margin-left: 10px;
         background: #f2f1f1;
         cursor: pointer;
+        border: none;
         border-radius: 10px;
       }
     }
   }
-
-  
 
 
     .ir-ws-webinar-uparrow {
         right: 20px;
         top: 15px;
         cursor: pointer;
-        position: absolute;
         }
 
   

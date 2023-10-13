@@ -1,16 +1,21 @@
-.ir-chat-admin-inside-tab-container{
+.createWebinarBox{
+    width: 100%;
     background-color: #d9d9d9;
     height: 570px;
     border-radius: 0px 20px 20px 20px;
-    .ir-chat-rooms-tab-container-button{
+    .createWebinarButton{
           width: 550px;
           height: 70px;
           border-radius: 50px;
+          border: none;
           background-color: #fff;
           margin-top: 100px;
           cursor: pointer;
           font-size: 18px;
-
     }
   
   }
+ 
+ 
+
+
