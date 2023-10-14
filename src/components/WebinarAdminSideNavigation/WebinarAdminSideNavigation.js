@@ -1,6 +1,7 @@
 import "./WebinarAdminSideNavigation.scss";
 import "../../App.scss";
 import { useState } from "react";
+//Redesigned
 
 function WebinarAdminSideNavigation() {
   const [activeButton, setActiveButton] = useState("Webinar");
