@@ -1,23 +1,33 @@
-import React from 'react'
-import './WebinarAdminCustomTab.scss'
+import React, { useState } from "react";
+import "./WebinarAdminCustomTab.scss";
 
-const WebinarAdminCustomTab = ({ isToggle, onTabChange}) => {
+const WebinarAdminCustomTab = ({ toggle, setToggle }) => {
+  function handleCreateToggle() {
+    setToggle(false);
+  }
+  function handleShowWebinarListToggle() {
+    setToggle(true);
+  }
   return (
-<div className='ir-ws-webiner-box ir-ws-flex'>
+    <div className="ir-ws-webinar-admin-custom-tab">
       <p
-        className={`ir-ws-wabinar-tab ir-ws-text-center ${isToggle === 1 ? 'active-button' : ''}`}
-        onClick={() => onTabChange(1)}
+        onClick={handleCreateToggle}
+        className={`ir-ws-custom-tab-button ${
+          toggle === true ? "ir-ws-cutom-tab-active" : ""
+        }`}
       >
         Create Webinar
       </p>
       <p
-        className={`ir-ws-wabinar-tab  ir-ws-text-center ${isToggle === 2 ? 'active-button' : ''}`}
-        onClick={() => onTabChange(2)}
+        className={`ir-ws-custom-tab-button ${
+          toggle === false ? "ir-ws-cutom-tab-active" : ""
+        }`}
+        onClick={handleShowWebinarListToggle}
       >
         Webinar List
       </p>
     </div>
-);
-}
+  );
+};
 
-export default WebinarAdminCustomTab
+export default WebinarAdminCustomTab;

@@ -1,14 +1,12 @@
-.ir-ws-webiner-admin-container{
-      margin: 0 auto;
-      // position: relative;
-      width: calc(100% - 500px);
-      .ir-ws-webiner-admin-text{
-        font-weight: 700;
-        font-size: 27px; // there is no specific font size 
-        margin-bottom: 0px;
-        margin-top: 60px;
-      }
-  }
-  
-  
-  
+.ir-ws-webiner-admin-container {
+  width: calc(100% - 400px);
+  margin: 0px auto;
+  margin-top: 0;
+}
+.ir-ws-webinar-text {
+  // margin: 0;
+  // margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}

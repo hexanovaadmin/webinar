@@ -1,12 +1,12 @@
-import React from 'react'
-import WebinarAdminContent from '../../components/WebinarAdminContentWebinar/WebinarAdminContent'
+import React from "react";
+import WebinarAdminContent from "../../components/WebinarAdminContentWebinar/WebinarAdminContent";
 import WebinarAdminSideNavigation from "../../components/WebinarAdminSideNavigation/WebinarAdminSideNavigation";
 
 function Webinar() {
   return (
-    <div>
+    <div className="ir-ws-flex ">
       <WebinarAdminSideNavigation />
-      <WebinarAdminContent/>
+      <WebinarAdminContent />
     </div>
   );
 }

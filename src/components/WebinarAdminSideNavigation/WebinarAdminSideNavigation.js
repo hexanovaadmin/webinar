@@ -7,9 +7,21 @@ function WebinarAdminSideNavigation() {
   function handleActive(button) {
     setActiveButton(button);
   }
-  //comment for branch 10
 
-  const navigation = ["Webinar", "User 1", "User 2"];
+  const navigation = [
+    {
+      id: 1,
+      title: "Webinar",
+    },
+    {
+      id: 2,
+      title: "User 1",
+    },
+    {
+      id: 3,
+      title: "User 2",
+    },
+  ];
 
   return (
     <div className="ir-ws-flex flex-column ir-ws-align-center ir-ws-justify-space-btw ir-ws-position-relative ir-ws-navigation-main-box ir-ws-width-25">
@@ -27,12 +39,12 @@ function WebinarAdminSideNavigation() {
           {navigation.map((item, index) => (
             <li
               className={`ir-ws-flex flex-column ir-ws-align-center ir-ws-justify-center ir-ws-admin-list  ${
-                activeButton === item ? "active" : ""
+                activeButton === item.title ? "active" : ""
               }`}
-              key={index}
-              onClick={() => handleActive(item)}
+              key={item.id}
+              onClick={() => handleActive(item.title)}
             >
-              {item}
+              {item.title}
             </li>
           ))}
         </ul>

@@ -1,21 +1,22 @@
-.createWebinarBox{
-    width: 100%;
-    background-color: #d9d9d9;
-    height: 570px;
-    border-radius: 0px 20px 20px 20px;
-    .createWebinarButton{
-          width: 550px;
-          height: 70px;
-          border-radius: 50px;
-          border: none;
-          background-color: #fff;
-          margin-top: 100px;
-          cursor: pointer;
-          font-size: 18px;
-    }
-  
-  }
- 
- 
+.ir-ws-admin-create-webinar-tab {
+  margin-top: 0px;
+  height: 78%;
+  background: #d9d9d9;
+  border-radius: 0px 20px 20px 20px;
+  position: relative;
+}
+.ir-ws-create-webinar-button-container {
+  display: flex;
+  justify-content: center;
+}
 
-
+.ir-ws-create-webinar-button-container button {
+  margin-top: 100px;
+  border: none;
+  width: 50%;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 50px;
+  background-color: #fff;
+  cursor: pointer;
+}

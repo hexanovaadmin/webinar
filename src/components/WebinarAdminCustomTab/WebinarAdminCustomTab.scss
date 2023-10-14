@@ -1,20 +1,19 @@
+.ir-ws-webinar-admin-custom-tab {
+  display: flex;
+  margin: 0;
+  gap: 8px;
+  align-content: center;
+}
 
-.ir-ws-webiner-box {
-    gap: 10px;
-  
-  .ir-ws-wabinar-tab {
-      padding: 10px;
-      width: 174px;
-      background-color: #F2F1F1;
-      border-radius: 20px 20px 0px 0px;
-      cursor: pointer;
-      margin-bottom: 0px;
-      font-weight: 700;
-     
-    }
-    .active-button {
-      background: #d9d9d9;
-     }
-    
-  
-  }
+.ir-ws-custom-tab-button {
+  margin-top: 10px;
+  padding: 10px 40px;
+  background: #d9d9d9;
+  border-radius: 20px 20px 0px 0px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+.ir-ws-cutom-tab-active {
+  background: #f2f1f1;
+}
