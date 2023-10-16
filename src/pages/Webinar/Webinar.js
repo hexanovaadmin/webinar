@@ -1,12 +1,13 @@
 import React from 'react'
-import WebinarAdminContent from '../../components/WebinarAdminContentWebinar/WebinarAdminContent'
-import WebinarAdminSideNavigation from "../../components/WebinarAdminSideNavigation/WebinarAdminSideNavigation";
+import UserAdminTab from '../../Components/UserAdminTab/WebinarAdminContentWebinar/UserAdminTab'
+import '../../App.scss'
+
+
 
 function Webinar() {
   return (
     <div>
-      <WebinarAdminSideNavigation />
-      <WebinarAdminContent/>
+      <UserAdminTab/>
     </div>
   );
 }
