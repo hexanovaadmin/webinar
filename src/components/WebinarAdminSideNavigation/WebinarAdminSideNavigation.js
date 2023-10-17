@@ -1,46 +1,78 @@
-import "./WebinarAdminSideNavigation.scss";
-import "../../App.scss";
 import { useState } from "react";
+import "./WebinarAdminSideNavigation.scss";
 
-function WebinarAdminSideNavigation() {
-  const [activeButton, setActiveButton] = useState("Webinar");
-  function handleActive(button) {
-    setActiveButton(button);
-  }
-
-  const navigation = ["Webinar", "User 1", "User 2"];
+const WebinarAdminSideNavigation = () => {
+  const [activeAltTitle, setActiveAltTitle] = useState("Chat");
+  const ChatNavValues = [
+    {
+      id: 1,
+      alttitle: "Chat",
+    },
+    {
+      id: 2,
+      alttitle: "Favourites",
+    },
+    {
+      id: 3,
+      alttitle: "Archive",
+    },
+    {
+      id: 4,
+      alttitle: "Notifications",
+    },
+    {
+      id: 5,
+      alttitle: "Settings",
+    },
+    {
+      id: 6,
+      alttitle: "Profile",
+    },
+  ];
 
   return (
-    <div className="ir-ws-flex flex-column ir-ws-align-center ir-ws-justify-space-btw ir-ws-position-relative ir-ws-navigation-main-box ir-ws-width-25">
-      <div className="ir-ws-position-absolute ir-ws-flex ir-ws-align-center ir-ws-justify-center ir-ws-border-50 ir-ws-admin-logo-container">
-        <img
-          className="ir-ws-admin-navigation-logo"
-          src={require("../../assets/images/webinarLogo.png")}
-          alt="logo"
-        />
+    <div className="ir-chat-navigation-container side-menu flex-lg-column">
+      <div className="navbar-brand-box">
+        <a className="logo logo-light" href="https://ir4u.info/">
+          <img src={require("../../assets/images/ir4u4.png")} alt="logo" />
+        </a>
       </div>
-
-      <div className="ir-ws-flex flex-column ir-ws-align-center ir-ws-admin-container">
-        <div className="ir-ws-admin-text">Admin</div>
-        <ul className="ir-margin-0 ir-ws-padding-0 ir-ws-flex flex-column ir-ws-admin-box ">
-          {navigation.map((item, index) => (
-            <li
-              className={`ir-ws-flex flex-column ir-ws-align-center ir-ws-justify-center ir-ws-admin-list  ${
-                activeButton === item ? "active" : ""
-              }`}
-              key={index}
-              onClick={() => handleActive(item)}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <button className="ir-ws-logout-button ">Log Out</button>
-      </div>
+      <ul className="side-menu-nav">
+        {ChatNavValues.map((val, id) => {
+          if (val.id !== 6) {
+            return (
+              <li
+                key={id}
+                className={`side-nav-item ${
+                  activeAltTitle === val.alttitle ? "activeMenuItem" : ""
+                }`}
+                id={val.alttitle}
+                onClick={() => setActiveAltTitle(val.alttitle)}
+              >
+                <a
+                  className={`nav-link ${
+                    activeAltTitle === val.alttitle
+                      ? "active alttitle-text"
+                      : ""
+                  }`}
+                >
+                  <span className="">{val.alttitle}</span>
+                </a>
+              </li>
+            );
+          }
+        })}
+        <li className="side-nav-item" id="Profile">
+          <span className="ir-nav-tooltip">Profile</span>
+        </li>
+        <li className="side-nav-item logout-button">
+          <div className="nav-icon nav-link">
+            <span className="icon-text">Logout</span>
+          </div>
+        </li>
+      </ul>
     </div>
   );
-}
+};
 
 export default WebinarAdminSideNavigation;
