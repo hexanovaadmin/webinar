@@ -1,13 +1,17 @@
 import "./WebinarAdminCreateWebinarTab.scss";
 import WebinarAdminWebinarListTab from "../WebinarAdminWebinarListTab/WebinarAdminWebinarListTab";
-import { useState } from "react";
+import CreateWebinarModal from "./CreateWebinarModal";
+import { useModalContext } from "./ModalContext";
 
 function WebinarAdminCreateWebinarTab({ toggle, setToggle }) {
+  const { openModal } = useModalContext();
+
   return (
     <div className="ir-ws-admin-create-webinar-tab">
       <div className="ir-ws-create-webinar-button-container">
-        <button>Create Webinar</button>
+        <button onClick={openModal}>Create Webinar</button>
       </div>
+      <CreateWebinarModal />
       {toggle && (
         <WebinarAdminWebinarListTab toggle={toggle} setToggle={setToggle} />
       )}
