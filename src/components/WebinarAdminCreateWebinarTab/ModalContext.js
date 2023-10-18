@@ -5,12 +5,14 @@ const ModalContext = createContext();
 
 function ModalProvider({ children }) {
   const [webinarName, setWebinarName] = useState("");
-  const [dateTime, setDateTime] = useState(null);
+  const [dateTime, setDateTime] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState("");
   const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
 
   const inputField = [
     {
@@ -56,9 +58,28 @@ function ModalProvider({ children }) {
       callback();
     }
   }
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const imageElement = new Image();
+      const imageUrl = URL.createObjectURL(file);
+      imageElement.src = imageUrl;
+      setSelectedImage(imageElement);
+    }
+
+    setIsEditorOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsEditorOpen(false);
+    setSelectedImage(null);
+  };
+
   useEffect(() => {
     console.log(data);
   }, [data]);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (!webinarName || !dateTime || !description || !price || !file) return;
@@ -73,6 +94,7 @@ function ModalProvider({ children }) {
     setDescription("");
     setWebinarName("");
     setPrice("");
+    setFile("");
     handleAddData(formDataObject, closeModal);
   }
 
@@ -85,6 +107,11 @@ function ModalProvider({ children }) {
         modalOpen,
         openModal,
         closeModal,
+        handleFileChange,
+        handleCancel,
+        isEditorOpen,
+        selectedImage,
+        setIsEditorOpen,
       }}
     >
       {children}
