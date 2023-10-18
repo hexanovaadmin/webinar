@@ -1,0 +1,9 @@
+.ir-ws--create-webinar-submit-button {
+  cursor: pointer;
+}
+input[type="datetime-local"]:required:invalid::-webkit-datetime-edit {
+  color: transparent;
+}
+input[type="datetime-local"]:focus::-webkit-datetime-edit {
+  color: black !important;
+}

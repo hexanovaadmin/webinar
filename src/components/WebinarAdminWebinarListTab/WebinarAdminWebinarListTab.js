@@ -22,7 +22,7 @@ function WebinarAdminWebinarListTab() {
       </div>
       <div className="ir-ws-admin-list-button-container">
         {listTabButton.map((item, index) => (
-          <button>{item}</button>
+          <button key={index}>{item}</button>
         ))}
       </div>
     </div>
