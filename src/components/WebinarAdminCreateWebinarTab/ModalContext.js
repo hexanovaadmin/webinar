@@ -8,7 +8,7 @@ function ModalProvider({ children }) {
   const [dateTime, setDateTime] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState([]);
   const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -67,7 +67,7 @@ function ModalProvider({ children }) {
       imageElement.src = imageUrl;
       setSelectedImage(imageElement);
     }
-
+    setFile(file);
     setIsEditorOpen(true);
   };
 
@@ -112,6 +112,7 @@ function ModalProvider({ children }) {
         isEditorOpen,
         selectedImage,
         setIsEditorOpen,
+        file,
       }}
     >
       {children}

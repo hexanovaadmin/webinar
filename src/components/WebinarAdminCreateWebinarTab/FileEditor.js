@@ -1,38 +1,32 @@
-import FilerobotImageEditor, { TABS } from "react-filerobot-image-editor";
+import FilerobotImageEditor, {
+  TABS,
+  TOOLS,
+} from "react-filerobot-image-editor";
 import { useModalContext } from "./ModalContext";
 
 function FileEditor() {
-  const { setFile, handleCancel, selectedImage, setIsEditorOpen } =
+  const { setFile, handleCancel, selectedImage, setIsEditorOpen, file } =
     useModalContext();
+  const originalFileName = (file.name || "Untitled").split(".")[0];
 
   return (
     <div>
       <div className="ir-ws-file-editor-box">
         <FilerobotImageEditor
           source={selectedImage}
+          onBeforeSave={(savedImageData, save) => {
+            savedImageData.name = originalFileName;
+            return false;
+          }}
           onSave={(editedImage) => {
             setFile(editedImage);
             setIsEditorOpen(false);
           }}
           onClose={handleCancel}
-          annotationsCommon={{
-            fill: "#ff0000",
-          }}
-          Text={{ text: "Filerobot..." }}
           Rotate={{ angle: 90, componentType: "slider" }}
           Crop={{
-            presetsItems: [
-              {
-                titleKey: "classicTv",
-                descriptionKey: "4:3",
-                ratio: 4 / 3,
-              },
-              {
-                titleKey: "cinemascope",
-                descriptionKey: "21:9",
-                ratio: 21 / 9,
-              },
-            ],
+            noPresets: true,
+            ratio: "custom",
           }}
           tabsIds={[TABS.ADJUST, TABS.ANNOTATE]}
         />
