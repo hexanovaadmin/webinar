@@ -39,7 +39,7 @@ function ModalProvider({ children }) {
     {
       id: 4,
       title: "Set Price",
-      type: "number",
+      type: "text",
       state: price,
       setState: setPrice,
     },
@@ -59,15 +59,15 @@ function ModalProvider({ children }) {
     }
   }
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
+    const selectedFile = event.target.files[0];
 
-    if (file) {
+    if (selectedFile) {
       const imageElement = new Image();
-      const imageUrl = URL.createObjectURL(file);
+      const imageUrl = URL.createObjectURL(selectedFile);
       imageElement.src = imageUrl;
       setSelectedImage(imageElement);
     }
-    setFile(file);
+    setFile(selectedFile);
     setIsEditorOpen(true);
   };
 
@@ -76,9 +76,10 @@ function ModalProvider({ children }) {
     setSelectedImage(null);
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(file);
+  //   console.log(data);
+  // }, [data, file]);
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -2,6 +2,7 @@ import "./CreateWebinarModal.scss";
 import "../../App.scss";
 import { useModalContext } from "./ModalContext";
 import FileEditor from "./FileEditor";
+import { useEffect, useState } from "react";
 function CreateWebinarModal() {
   const {
     handleSubmit,
@@ -10,9 +11,21 @@ function CreateWebinarModal() {
     closeModal,
     handleFileChange,
     isEditorOpen,
+    file,
   } = useModalContext();
 
-  if (!modalOpen) return null;
+  const [fileName, setFileName] = useState(file.fullName);
+  useEffect(() => {
+    setFileName(file.fullName);
+  }, [file.fullName]);
+
+  function handleClearFile() {
+    setFileName("");
+  }
+
+  if (!modalOpen) {
+    return null;
+  }
   return (
     <div className="ir-ws-position-fixed ir-ws-sign-popup-container ">
       <div className="ir-ws-position-absolute ir-bg-white ir-ws-sign-popup-inner-container">
@@ -41,7 +54,10 @@ function CreateWebinarModal() {
                       name={item.title}
                       required
                       value={item.state}
-                      onChange={(e) => item.setState(e.target.value)}
+                      placeholder={item.title === "Set Price" ? "USD" : null}
+                      onChange={(e) => {
+                        item.setState(e.target.value);
+                      }}
                     />
                     <span className="ir-ws-signup-highlight"></span>
                     <span className="ir-ws-signup-bar"></span>
@@ -50,7 +66,19 @@ function CreateWebinarModal() {
                 ))}
 
                 <div className="ir-ws-file-field">
-                  <div className="ir-ws-file-path-wrapper"></div>
+                  <div className="ir-ws-file-path-wrapper">
+                    {fileName ? (
+                      <div className="file-field-wrapper">
+                        <span className="file-field-name">{fileName}</span>
+                        <span
+                          className="remove-file-item"
+                          onClick={handleClearFile}
+                        >
+                          X
+                        </span>
+                      </div>
+                    ) : null}
+                  </div>
                   <div className="ir-ws-create-case-file-btn-container">
                     {isEditorOpen ? null : (
                       <span className="btn blue-gradient btn-sm">Add file</span>
