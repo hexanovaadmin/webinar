@@ -11,6 +11,7 @@ function ModalProvider({ children }) {
   const [file, setFile] = useState([]);
   const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
@@ -114,6 +115,8 @@ function ModalProvider({ children }) {
         selectedImage,
         setIsEditorOpen,
         file,
+        modalType,
+        setModalType,
       }}
     >
       {children}

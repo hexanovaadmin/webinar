@@ -2,31 +2,19 @@ import { useState } from "react";
 import "./WebinarAdminSideNavigation.scss";
 
 const WebinarAdminSideNavigation = () => {
-  const [activeAltTitle, setActiveAltTitle] = useState("Chat");
+  const [activeAltTitle, setActiveAltTitle] = useState("Webinar");
   const ChatNavValues = [
     {
       id: 1,
-      alttitle: "Chat",
+      alttitle: "Webinar",
     },
     {
       id: 2,
-      alttitle: "Favourites",
+      alttitle: "Courses",
     },
     {
       id: 3,
-      alttitle: "Archive",
-    },
-    {
-      id: 4,
-      alttitle: "Notifications",
-    },
-    {
-      id: 5,
-      alttitle: "Settings",
-    },
-    {
-      id: 6,
-      alttitle: "Profile",
+      alttitle: "Cases",
     },
   ];
 
@@ -36,6 +24,7 @@ const WebinarAdminSideNavigation = () => {
         <a className="logo logo-light" href="https://ir4u.info/">
           <img src={require("../../assets/images/ir4u4.png")} alt="logo" />
         </a>
+        <h1 className="ir-ws-webinar-admin-text">Admin</h1>
       </div>
       <ul className="side-menu-nav">
         {ChatNavValues.map((val, id) => {
