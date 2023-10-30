@@ -3,7 +3,7 @@ import "../../App.scss";
 import { useModalContext } from "./ModalContext";
 import FileEditor from "./FileEditor";
 import { useEffect, useState } from "react";
-function CreateWebinarModal() {
+function CreateWebinarModal({ type }) {
   const {
     handleSubmit,
     inputField,
@@ -98,7 +98,7 @@ function CreateWebinarModal() {
                       type="submit"
                       onClick={handleSubmit}
                     >
-                      <span>Create Webinar</span>
+                      <span>{type}</span>
                     </button>
                   </div>
                 )}

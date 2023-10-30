@@ -52,7 +52,9 @@ function ModalProvider({ children }) {
 
   const closeModal = () => {
     setModalOpen(false);
+    setFile("");
   };
+
   function handleAddData(item, callback) {
     setData((items) => [...items, item]);
     if (callback) {

@@ -25,7 +25,7 @@ function WebinarAdminCreateWebinarTab({ toggle, setToggle }) {
           <button onClick={openModal}>Create Webinar</button>
         </div>
       )}
-      <CreateWebinarModal />
+      <CreateWebinarModal type={"Create Webinar"} />
       {toggle && (
         <div className="ir-ws-admin-webiner-list-container">
           {toggle &&
