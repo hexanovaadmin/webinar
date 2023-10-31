@@ -3,15 +3,15 @@ import "../../App.scss";
 import { useModalContext } from "./ModalContext";
 import FileEditor from "./FileEditor";
 import { useEffect, useState } from "react";
-function CreateWebinarModal({ type }) {
+function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
   const {
     handleSubmit,
     inputField,
-    modalOpen,
     closeModal,
     handleFileChange,
     isEditorOpen,
     file,
+    setFile,
   } = useModalContext();
 
   const [fileName, setFileName] = useState(file.fullName);
@@ -22,9 +22,9 @@ function CreateWebinarModal({ type }) {
   function handleClearFile() {
     setFileName("");
   }
-
-  if (!modalOpen) {
-    return null;
+  function handleCloseUpdateModal() {
+    setUpdateModal(false);
+    setFile("");
   }
   return (
     <div className="ir-ws-position-fixed ir-ws-sign-popup-container ">
@@ -32,7 +32,9 @@ function CreateWebinarModal({ type }) {
         <div className="ir-ws-signup-content-container">
           <div
             className="ir-ws-position-absolute ir-ws-signup-close-container"
-            onClick={closeModal}
+            onClick={
+              type === "Update Webinar" ? handleCloseUpdateModal : closeModal
+            }
           >
             <span>X</span>
           </div>

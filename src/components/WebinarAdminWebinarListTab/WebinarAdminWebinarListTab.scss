@@ -4,11 +4,11 @@
   left: 2.5%;
   border-radius: 10px;
   background-color: #fff;
-  transition: height 0.2s;
   margin: 20px 0px 0px 20px;
 }
 .ir-ws-webinar-list-tab.active {
   height: 50px;
+
   .ir-ws-admin-webinar-content {
     height: 100%;
   }
@@ -24,7 +24,6 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  // transition: height 0.6s, justify-content 0.6s;
 }
 
 .ir-ws-webinar-transaction-button {
@@ -33,9 +32,19 @@
   align-items: center;
   gap: 5px;
 }
-.ir-ws-webinar-transaction-button {
+.ir-ws-admin-list-button-container button {
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+.ir-ws-webinar-transaction-button-active {
   background-color: #748ffc;
 }
+
 .ir-ws-admin-drop-down-icon {
   height: 20px;
   cursor: pointer;
@@ -51,10 +60,15 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  height: 50px;
   background: #bfbfbf;
-  height: 50x;
   font-size: 18px;
   margin-top: 20px;
+  list-style: none;
+}
+.ir-ws-list-item-box {
+  width: 200px;
+  text-align: center;
 }
 .ir-ws-webinar-list-data {
   display: flex;
@@ -64,6 +78,11 @@
   background: #efefef;
   margin-block: 30px;
   font-size: 18px;
+  list-style: none;
+}
+.ir-ws-webinar-list-data li {
+  width: 200px;
+  text-align: center;
 }
 .ir-ws-webinar-download-icon {
   height: 30px;
@@ -72,15 +91,4 @@
 .ir-ws-admin-list-button-container {
   display: flex;
   gap: 10px;
-}
-
-.ir-ws-admin-list-button-container button {
-  width: 140px;
-  height: 40px;
-  border: none;
-  background: #f2f1f1;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-right: 15px;
 }

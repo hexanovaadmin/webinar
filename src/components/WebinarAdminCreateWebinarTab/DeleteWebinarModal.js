@@ -1,16 +1,17 @@
 import "../../App.scss";
 import "./DeleteWebinarModal.scss";
-import { useModalContext } from "./ModalContext";
 
-function DeleteWebinarModal() {
-  const { closeModal } = useModalContext();
+function DeleteWebinarModal({ deleteModal, setDeleteModal }) {
+  function handleCloseDeleteModal() {
+    setDeleteModal(false);
+  }
   return (
     <div className="ir-ws-position-fixed ir-ws-sign-popup-container ">
       <div className="ir-ws-position-absolute ir-bg-white ir-ws-sign-popup-inner-container">
         <div className="ir-ws-signup-content-container">
           <div
             className="ir-ws-position-absolute ir-ws-signup-close-container"
-            onClick={closeModal}
+            onClick={handleCloseDeleteModal}
           >
             <span>X</span>
           </div>

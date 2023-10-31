@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./WebinarAdminWebinarListTab.scss";
 import DeleteWebinarModal from "../WebinarAdminCreateWebinarTab/DeleteWebinarModal";
 import CreateWebinarModal from "../WebinarAdminCreateWebinarTab/CreateWebinarModal";
-
-import { useModalContext } from "../WebinarAdminCreateWebinarTab/ModalContext";
 
 function WebinarAdminWebinarListTab({ title }) {
   const webinarlistTab = ["Cancel", "Update", "Transaction"];
@@ -19,7 +17,7 @@ function WebinarAdminWebinarListTab({ title }) {
       userName: "Sunny",
       timeDate: "28/10/2023  11:30 am",
       transaction: "Successful",
-      invoiceNumber: 23456,
+      invoiceNumber: 234567456,
     },
     {
       userName: "Mohit",
@@ -35,19 +33,18 @@ function WebinarAdminWebinarListTab({ title }) {
     },
   ];
   const [isContentVisible, setContentVisible] = React.useState(false);
-  const { modalOpen, openModal, modalType, setModalType } = useModalContext();
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
   const toggleContentVisibility = () => {
     setContentVisible(!isContentVisible);
   };
-  const handleCancelClick = () => {
-    openModal();
-    setModalType("delete");
-  };
 
-  const handleUpdateClick = () => {
-    openModal();
-    setModalType("update");
-  };
+  function handleDeleteModal() {
+    setDeleteModal(true);
+  }
+  function handleUpdateModalOpen() {
+    setUpdateModal(true);
+  }
   return (
     <div
       className={`ir-ws-webinar-list-tab ${!isContentVisible ? "active" : ""}`}
@@ -56,24 +53,28 @@ function WebinarAdminWebinarListTab({ title }) {
         <p className="ir-ws-webinar-title-text">{title}</p>
         <div className="ir-ws-admin-list-button-container">
           {webinarlistTab.map((item, index) => (
-            <div className="button-with-icon" key={index}>
+            <div key={index}>
               {item === "Cancel" ? (
                 <button
                   className="ir-ws-webinar-cancel-button"
-                  onClick={handleCancelClick}
+                  onClick={handleDeleteModal}
                 >
                   {item}
                 </button>
               ) : item === "Update" ? (
                 <button
                   className="ir-ws-webinar-update-button"
-                  onClick={handleUpdateClick}
+                  onClick={handleUpdateModalOpen}
                 >
                   {item}
                 </button>
               ) : item === "Transaction" ? (
                 <button
-                  className="ir-ws-webinar-transaction-button"
+                  className={`ir-ws-webinar-transaction-button ${
+                    isContentVisible
+                      ? "ir-ws-webinar-transaction-button-active"
+                      : ""
+                  }`}
                   onClick={toggleContentVisibility}
                 >
                   {item}
@@ -103,19 +104,21 @@ function WebinarAdminWebinarListTab({ title }) {
       </div>
       {isContentVisible && (
         <div>
-          <div className="ir-ws-webinar-list-accordian-tab">
+          <ul className="ir-ws-webinar-list-accordian-tab">
             {accordianListButton.map((item, index) => (
-              <p key={index}>{item}</p>
+              <li className="ir-ws-list-item-box" key={index}>
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
           <div>
             {webinarData.map((item, index) => (
-              <div className="ir-ws-webinar-list-data">
-                <p>{item.userName}</p>
-                <p>{item.timeDate}</p>
-                <p>{item.transaction}</p>
-                <p>{item.invoiceNumber}</p>
-                <p>
+              <ul className="ir-ws-webinar-list-data" key={index}>
+                <li>{item.userName}</li>
+                <li>{item.timeDate}</li>
+                <li>{item.transaction}</li>
+                <li>{item.invoiceNumber}</li>
+                <li>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -130,15 +133,24 @@ function WebinarAdminWebinarListTab({ title }) {
                       d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
                     />
                   </svg>
-                </p>
-              </div>
+                </li>
+              </ul>
             ))}
           </div>
         </div>
       )}
-      {modalOpen && modalType === "delete" && <DeleteWebinarModal />}
-      {modalOpen && modalType === "update" && (
-        <CreateWebinarModal type={"Update Webinar"} />
+      {deleteModal && (
+        <DeleteWebinarModal
+          deleteModal={deleteModal}
+          setDeleteModal={setDeleteModal}
+        />
+      )}
+      {updateModal && (
+        <CreateWebinarModal
+          type="Update Webinar"
+          updateModal={updateModal}
+          setUpdateModal={setUpdateModal}
+        />
       )}
     </div>
   );

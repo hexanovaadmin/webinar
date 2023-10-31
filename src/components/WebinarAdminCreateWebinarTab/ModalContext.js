@@ -11,9 +11,9 @@ function ModalProvider({ children }) {
   const [file, setFile] = useState([]);
   const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalType, setModalType] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const inputField = [
     {
@@ -45,11 +45,9 @@ function ModalProvider({ children }) {
       setState: setPrice,
     },
   ];
-
   const openModal = () => {
     setModalOpen(true);
   };
-
   const closeModal = () => {
     setModalOpen(false);
     setFile("");
@@ -109,16 +107,17 @@ function ModalProvider({ children }) {
         setFile,
         handleSubmit,
         modalOpen,
-        openModal,
         closeModal,
+        openModal,
         handleFileChange,
         handleCancel,
         isEditorOpen,
         selectedImage,
         setIsEditorOpen,
         file,
-        modalType,
-        setModalType,
+        setModalOpen,
+        deleteModal,
+        setDeleteModal,
       }}
     >
       {children}
