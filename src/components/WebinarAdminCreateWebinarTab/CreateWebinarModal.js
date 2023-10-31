@@ -3,6 +3,8 @@ import "../../App.scss";
 import { useModalContext } from "./ModalContext";
 import FileEditor from "./FileEditor";
 import { useEffect, useState } from "react";
+
+
 function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
   const {
     handleSubmit,
@@ -26,6 +28,37 @@ function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
     setUpdateModal(false);
     setFile("");
   }
+
+
+
+  // function handleSubmit(event) {
+  //   event.preventDefault(); // Prevents the default form submission behavior
+
+  //   // Gather data from input fields or state
+  //   const formData = {};
+  //   inputField.forEach(item => {
+  //     formData[item.title] = item.state; // Assuming inputField has 'state' and 'title' properties
+  //   });
+
+  //   formData['File Name'] = fileName; // Add the file name to the form data
+
+  //   // Log the gathered data to the console
+  //   console.log('Submitted Data:', formData);
+
+  //   // Perform any additional actions with the form data if needed
+
+  //   // Close the modal or perform other actions after form submission
+  //   if (type === "Update Webinar") {
+  //     handleCloseUpdateModal();
+  //   } else {
+  //     closeModal();
+  //   }
+  // }
+
+
+
+
+
   return (
     <div className="ir-ws-position-fixed ir-ws-sign-popup-container ">
       <div className="ir-ws-position-absolute ir-bg-white ir-ws-sign-popup-inner-container">
@@ -114,3 +147,10 @@ function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
 }
 
 export default CreateWebinarModal;
+
+
+
+
+  // ... (existing code)
+
+

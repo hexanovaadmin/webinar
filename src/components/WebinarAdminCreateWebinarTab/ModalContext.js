@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { postWebinarData } from "../../webinarApi/webinarApi";
 
 const ModalContext = createContext();
 
@@ -72,32 +73,52 @@ function ModalProvider({ children }) {
     setIsEditorOpen(true);
   };
 
+
+
   const handleCancel = () => {
     setIsEditorOpen(false);
     setSelectedImage(null);
   };
 
-  // useEffect(() => {
-  //   console.log(file);
-  //   console.log(data);
-  // }, [data, file]);
+
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!webinarName || !dateTime || !description || !price || !file) return;
     const formDataObject = {
-      webinarName,
-      dateTime,
-      description,
-      price,
-      file,
+      // webinarName,
+      // dateTime,
+      // description,
+      // price,
+      // file,
+      dateAndTime: dateTime,
+      title: webinarName,
+      description: description,
+      thumbnail: "test thumbnail", // Replace with actual thumbnail data or remove if not applicable
+      price: parseInt(price), // Assuming the price should be a number
+      currency: "USD", // Hardcoded currency or dynamic selection
+      offer: "10", // Placeholder or dynamically capture offer data
+      noOfSeats: 250, 
     };
-    setDateTime("");
-    setDescription("");
-    setWebinarName("");
-    setPrice("");
-    setFile("");
-    handleAddData(formDataObject, closeModal);
+    const bearerToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTg3NTM1OTAsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.oRSpg-Ah1x0770mUjoI9N3oYUp6kUW_aa0UUd7eL9NM";
+
+    postWebinarData(formDataObject, bearerToken)
+    .then((data) => {
+      console.log("Data posted:", data);
+      setDateTime("");
+      setDescription("");
+      setWebinarName("");
+      setPrice("");
+      setFile("");
+      handleAddData(formDataObject, closeModal);
+    })
+    .catch((error) => {
+      // Handle errors or update state accordingly
+      console.log(error)
+    });
+
+  
+
   }
 
   return (
