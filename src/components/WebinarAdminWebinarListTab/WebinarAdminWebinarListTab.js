@@ -29,7 +29,7 @@ function WebinarAdminWebinarListTab({ title }) {
       userName: "Saheb",
       timeDate: "28/10/2023  11:30 am",
       transaction: "Successful",
-      invoiceNumber: 2363455,
+      invoiceNumber: 2363455, 
     },
   ];
   const [isContentVisible, setContentVisible] = React.useState(false);
