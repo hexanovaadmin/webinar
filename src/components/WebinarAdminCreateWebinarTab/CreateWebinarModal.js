@@ -1,18 +1,40 @@
 import "./CreateWebinarModal.scss";
 import "../../App.scss";
 import { useModalContext } from "./ModalContext";
-function CreateWebinarModal() {
-  const { handleSubmit, inputField, setFile, modalOpen, closeModal } =
-    useModalContext();
+import FileEditor from "./FileEditor";
+import { useEffect, useState } from "react";
+function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
+  const {
+    handleSubmit,
+    inputField,
+    closeModal,
+    handleFileChange,
+    isEditorOpen,
+    file,
+    setFile,
+  } = useModalContext();
 
-  if (!modalOpen) return null;
+  const [fileName, setFileName] = useState(file.fullName);
+  useEffect(() => {
+    setFileName(file.fullName);
+  }, [file.fullName]);
+
+  function handleClearFile() {
+    setFileName("");
+  }
+  function handleCloseUpdateModal() {
+    setUpdateModal(false);
+    setFile("");
+  }
   return (
     <div className="ir-ws-position-fixed ir-ws-sign-popup-container ">
       <div className="ir-ws-position-absolute ir-bg-white ir-ws-sign-popup-inner-container">
         <div className="ir-ws-signup-content-container">
           <div
             className="ir-ws-position-absolute ir-ws-signup-close-container"
-            onClick={closeModal}
+            onClick={
+              type === "Update Webinar" ? handleCloseUpdateModal : closeModal
+            }
           >
             <span>X</span>
           </div>
@@ -22,42 +44,68 @@ function CreateWebinarModal() {
             </h3>
           </div>
           <form className="ir-ws-signup-form-container">
-            {inputField.map((item, index) => (
-              <div className="ir-ws-signup-content-group" key={index}>
-                <input
-                  className="ir-ws-signup-input-field"
-                  type={item.type}
-                  name={item.title}
-                  required
-                  value={item.state}
-                  onChange={(e) => item.setState(e.target.value)}
-                />
-                <span className="ir-ws-signup-highlight"></span>
-                <span className="ir-ws-signup-bar"></span>
-                <label className="ir-ws-signup-label">{item.title}</label>
-              </div>
-            ))}
-            <div className="ir-images-row images"></div>
-            <div className="ir-ws-file-field">
-              <div className="ir-ws-file-path-wrapper"></div>
-              <div className="ir-ws-create-case-file-btn-container">
-                <span className="btn blue-gradient btn-sm">Add file</span>
-                <input
-                  type="file"
-                  className="doesnt-exists"
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </div>
-            </div>
-            <div className="ir-ws-text-center ir-ws-default-btn-container">
-              <button
-                className="ir-ws-app-bg btn ir-color-white ir-ws-no-border ir-ws-default-btn ir-ws--create-webinar-submit-button"
-                type="submit"
-                onClick={handleSubmit}
-              >
-                <span>Create Webinar</span>
-              </button>
-            </div>
+            {isEditorOpen ? (
+              <FileEditor />
+            ) : (
+              <>
+                {inputField.map((item, index) => (
+                  <div className="ir-ws-signup-content-group" key={index}>
+                    <input
+                      className="ir-ws-signup-input-field"
+                      type={item.type}
+                      name={item.title}
+                      required
+                      value={item.state}
+                      placeholder={item.title === "Set Price" ? "USD" : null}
+                      onChange={(e) => {
+                        item.setState(e.target.value);
+                      }}
+                    />
+                    <span className="ir-ws-signup-highlight"></span>
+                    <span className="ir-ws-signup-bar"></span>
+                    <label className="ir-ws-signup-label">{item.title}</label>
+                  </div>
+                ))}
+
+                <div className="ir-ws-file-field">
+                  <div className="ir-ws-file-path-wrapper">
+                    {fileName ? (
+                      <div className="file-field-wrapper">
+                        <span className="file-field-name">{fileName}</span>
+                        <span
+                          className="remove-file-item"
+                          onClick={handleClearFile}
+                        >
+                          X
+                        </span>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="ir-ws-create-case-file-btn-container">
+                    {isEditorOpen ? null : (
+                      <span className="btn blue-gradient btn-sm">Add file</span>
+                    )}
+                    <input
+                      type="file"
+                      className="doesnt-exists"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                </div>
+
+                {isEditorOpen ? null : (
+                  <div className="ir-ws-text-center ir-ws-default-btn-container">
+                    <button
+                      className="ir-ws-app-bg btn ir-color-white ir-ws-no-border ir-ws-default-btn ir-ws--create-webinar-submit-button"
+                      type="submit"
+                      onClick={handleSubmit}
+                    >
+                      <span>{type}</span>
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
           </form>
         </div>
       </div>

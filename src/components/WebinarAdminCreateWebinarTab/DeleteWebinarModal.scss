@@ -1,0 +1,23 @@
+.ir-ws-deleteModal-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 50px;
+}
+.ir-ws-deleteModal-button-container button {
+  border: none;
+  width: 20%;
+  height: 40px;
+  color: #f8f9fa;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ir-ws-deleteModal-button-yes {
+  background-color: #c92a2a;
+}
+.ir-ws-deleteModal-button-no {
+  background-color: #364fc7;
+}
