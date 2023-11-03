@@ -1,14 +1,18 @@
-import React from "react";
-
-import "./App.scss";
 import Webinar from "./pages/Webinar/Webinar";
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import WebinarMeeting from "./components/WebinarCreateMeeting/WebinarMeeting";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Webinar />,
+  },
+  {
+    path: "/meeting",
+    element: <WebinarMeeting />,
+  },
+]);
 function App() {
-  return (
-    <div>
-      <Webinar />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
