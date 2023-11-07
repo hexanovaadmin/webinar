@@ -1,11 +1,12 @@
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
 
 const ModalContext = createContext();
 
 function ModalProvider({ children }) {
-  const [webinarName, setWebinarName] = useState("");
-  const [dateTime, setDateTime] = useState("");
+  const [title, setTitle] = useState("");
+  const [dateAndTime, setDateAndTime] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState([]);
@@ -19,15 +20,15 @@ function ModalProvider({ children }) {
       id: 1,
       title: "Date and Time",
       type: "datetime-local",
-      state: dateTime,
-      setState: setDateTime,
+      state: dateAndTime,
+      setState: setDateAndTime,
     },
     {
       id: 2,
       title: "Webinar Name",
       type: "text",
-      state: webinarName,
-      setState: setWebinarName,
+      state: title,
+      setState: setTitle,
     },
     {
       id: 3,
@@ -81,22 +82,43 @@ function ModalProvider({ children }) {
   //   console.log(data);
   // }, [data, file]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!webinarName || !dateTime || !description || !price || !file) return;
-    const formDataObject = {
-      webinarName,
-      dateTime,
-      description,
-      price,
-      file,
-    };
-    setDateTime("");
-    setDescription("");
-    setWebinarName("");
-    setPrice("");
-    setFile("");
-    handleAddData(formDataObject, closeModal);
+    const BASE_URL =
+      "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/webinar/admin";
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTkyODY4NzQsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.9whoC50XWQHivbLHkF-nWVca3zXGFqssdb1-auu0zos";
+
+    try {
+      const formData = {
+        dateAndTime,
+        title,
+        description,
+        thumbnail: "test thumbnail",
+        price,
+        file,
+        currency: "USD",
+        offer: "10",
+        noOfSeats: 250,
+      };
+      const response = await axios.post(BASE_URL, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("API Response:", response);
+
+      setDateAndTime("");
+      setTitle("");
+      setDescription("");
+      setPrice("");
+      setFile("");
+      closeModal();
+    } catch (error) {
+      console.error("Error making API request:", error);
+    }
   }
 
   return (
