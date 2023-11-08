@@ -2,8 +2,6 @@ import "./WebinarAdminCreateWebinarTab.scss";
 import WebinarAdminWebinarListTab from "../WebinarAdminWebinarListTab/WebinarAdminWebinarListTab";
 import CreateWebinarModal from "./CreateWebinarModal";
 import { useModalContext } from "./ModalContext";
-import { useState } from "react";
-import { useEffect } from "react";
 
 function WebinarAdminCreateWebinarTab({ toggle, setToggle }) {
   const { modalOpen, setModalOpen } = useModalContext();

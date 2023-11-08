@@ -58,9 +58,6 @@ function ModalProvider({ children }) {
     setFile("");
   };
 
-  // function handleAddData(item) {
-  //   setWebinarData((items) => [...items, item]);
-  // }
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
 
@@ -85,9 +82,6 @@ function ModalProvider({ children }) {
   // }, [webinarData]);
 
   async function handleSubmit() {
-    // const token =
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk0NTU0NzgsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.oEZRH2T51fcEG4sLcXUPeopsSL38xyfduOiftuScKvY";
-
     try {
       setIsLoading(true);
       const formData = {
