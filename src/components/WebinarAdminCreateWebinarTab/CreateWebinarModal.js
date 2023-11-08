@@ -9,10 +9,11 @@ function CreateWebinarModal({ type, setUpdateModal, updateModal, id }) {
     inputField,
     closeModal,
     handleFileChange,
+    handleUpdateWebinar,
     isEditorOpen,
     file,
     setFile,
-    handleUpdateWebinar,
+    isLoading,
   } = useModalContext();
 
   const [fileName, setFileName] = useState(file.fullName);
@@ -99,11 +100,18 @@ function CreateWebinarModal({ type, setUpdateModal, updateModal, id }) {
                     <button
                       className="ir-ws-app-bg btn ir-color-white ir-ws-no-border ir-ws-default-btn ir-ws--create-webinar-submit-button"
                       type="submit"
-                      onClick={() => {
+                      disabled={isLoading}
+                      onClick={async (e) => {
+                        e.preventDefault();
                         if (type === "Create Webinar") {
-                          handleSubmit();
+                          await handleSubmit();
                         } else if (type === "Update Webinar") {
-                          handleUpdateWebinar(id);
+                          try {
+                            await handleUpdateWebinar(id);
+                            handleCloseUpdateModal();
+                          } catch (error) {
+                            console.error("Update Webinar failed:", error);
+                          }
                         }
                       }}
                     >

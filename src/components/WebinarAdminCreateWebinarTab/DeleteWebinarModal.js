@@ -25,7 +25,14 @@ function DeleteWebinarModal({ deleteModal, setDeleteModal, id }) {
           <div className="ir-ws-deleteModal-button-container">
             <button
               className="ir-ws-deleteModal-button-yes"
-              onClick={() => handleDeleteWebinar(id)}
+              onClick={async () => {
+                try {
+                  await handleDeleteWebinar(id);
+                  handleCloseDeleteModal();
+                } catch (error) {
+                  console.error("Delete Webinar failed:", error);
+                }
+              }}
             >
               Yes
             </button>

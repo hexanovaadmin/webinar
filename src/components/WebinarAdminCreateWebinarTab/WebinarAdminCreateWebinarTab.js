@@ -24,10 +24,10 @@ function WebinarAdminCreateWebinarTab({ toggle, setToggle }) {
       {toggle && (
         <div className="ir-ws-admin-webiner-list-container">
           {toggle &&
-            webinarData.map((webinar) => (
+            webinarData.map((webinar, index) => (
               <WebinarAdminWebinarListTab
+                key={index}
                 id={webinar.id}
-                key={webinar.id}
                 title={webinar.title}
                 toggle={toggle}
                 setToggle={setToggle}
