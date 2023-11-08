@@ -3,7 +3,7 @@ import "../../App.scss";
 import { useModalContext } from "./ModalContext";
 import FileEditor from "./FileEditor";
 import { useEffect, useState } from "react";
-function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
+function CreateWebinarModal({ type, setUpdateModal, updateModal, id }) {
   const {
     handleSubmit,
     inputField,
@@ -12,6 +12,7 @@ function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
     isEditorOpen,
     file,
     setFile,
+    handleUpdateWebinar,
   } = useModalContext();
 
   const [fileName, setFileName] = useState(file.fullName);
@@ -98,7 +99,13 @@ function CreateWebinarModal({ type, setUpdateModal, updateModal }) {
                     <button
                       className="ir-ws-app-bg btn ir-color-white ir-ws-no-border ir-ws-default-btn ir-ws--create-webinar-submit-button"
                       type="submit"
-                      onClick={handleSubmit}
+                      onClick={() => {
+                        if (type === "Create Webinar") {
+                          handleSubmit();
+                        } else if (type === "Update Webinar") {
+                          handleUpdateWebinar(id);
+                        }
+                      }}
                     >
                       <span>{type}</span>
                     </button>
