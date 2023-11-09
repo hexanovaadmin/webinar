@@ -4,3 +4,16 @@
   align-items: center;
   margin-top: 300px;
 }
+
+.preview-video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Horizontally center the container */
+}
+
+/* You can also add additional styles for the PreviewVideo component if needed */
+.preview-video-container video {
+  max-width: 100%; /* Ensure the video fits within the container */
+}
