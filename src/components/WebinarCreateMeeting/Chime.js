@@ -1,26 +1,17 @@
 import "./WebinarCreateMeeting.scss";
 import {
   LocalVideo,
-  useLocalVideo,
   ContentShare,
-  useContentShareControls,
+  AudioInputControl,
+  VideoInputControl,
+  ContentShareControl,
 } from "amazon-chime-sdk-component-library-react";
 
-const Chime = ({ videoTiles }) => {
-  const { toggleVideo } = useLocalVideo();
-  const { toggleContentShare } = useContentShareControls();
-
-  const buttonClick = () => {
-    console.log("button");
-    toggleVideo();
-  };
-
+const Chime = ({ videoTiles, attendeeId }) => {
   return (
     <>
       {videoTiles && (
         <>
-          <button onClick={buttonClick}>Toggle video</button>
-          <button onClick={toggleContentShare}>ScreenShare</button>
           <div
             style={{
               margin: "20px auto",
@@ -29,7 +20,16 @@ const Chime = ({ videoTiles }) => {
               height: "450px",
             }}
           >
-            {videoTiles && <LocalVideo nameplate="me" id="localvideo" />}
+            {videoTiles && (
+              <>
+                <LocalVideo nameplate="me" id="localvideo" />
+                <div className="ir-ws-audioVideo-control">
+                  <AudioInputControl />
+                  <VideoInputControl />
+                  <ContentShareControl />
+                </div>
+              </>
+            )}
 
             <ContentShare />
           </div>

@@ -15,8 +15,9 @@ import Chime from "./Chime";
 
 const WebinarCreateMeeting = () => {
   const meetingManager = useMeetingManager();
-
+  // const { toggleVideo } = useLocalVideo();
   const [videoTiles, setVideoTiles] = useState(false);
+  const [attendeeId, setAttendeeId] = useState("");
 
   const url =
     "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/meetings/create";
@@ -40,6 +41,7 @@ const WebinarCreateMeeting = () => {
       // delete the meeting ID which is present in the host attendee details
       // delete hostAttendeeDetails.meetingId;
       const meetingDetails = response.data.meetingDetails;
+      setAttendeeId(response.data.hostAttendeeDetails.attendeeId);
       const meetingSessionConfiguration = new MeetingSessionConfiguration(
         meetingDetails,
         hostAttendeeDetails
@@ -48,16 +50,18 @@ const WebinarCreateMeeting = () => {
       await meetingManager.join(meetingSessionConfiguration);
       await meetingManager.start();
       setVideoTiles(true);
+      // toggleVideo();
     } catch (error) {
       console.error("An error occurred:", error);
     }
   };
+  console.log(attendeeId);
 
   return (
     <>
       <div className="ir-ws-meeting-container">
         <button onClick={joinMeeting}>Join</button>
-        <Chime videoTiles={videoTiles} />
+        <Chime videoTiles={videoTiles} attendeeId={attendeeId} />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 .ir-ws-meeting-container {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 50px;
   // margin-bottom: 20px;
 }
 .preview-video-container {
@@ -12,4 +12,10 @@
   height: "480px";
   padding: "1rem";
   // margin: 0 auto; /* Horizontally center the container */
+}
+.ir-ws-audioVideo-control {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
 }
