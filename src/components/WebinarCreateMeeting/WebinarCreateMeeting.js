@@ -11,13 +11,13 @@ import {
 } from "amazon-chime-sdk-component-library-react";
 import { MeetingSessionConfiguration } from "amazon-chime-sdk-js";
 import { useState } from "react";
+import Chime from "./Chime";
 
 const WebinarCreateMeeting = () => {
   const meetingManager = useMeetingManager();
-  const { toggleVideo } = useLocalVideo();
-  const { toggleContentShare } = useContentShareControls();
 
-  // const [meeting, setMeeting] = useState(false);
+  const [videoTiles, setVideoTiles] = useState(false);
+
   const url =
     "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/meetings/create";
   const bearerToken =
@@ -47,7 +47,7 @@ const WebinarCreateMeeting = () => {
       // const requestData = {};
       await meetingManager.join(meetingSessionConfiguration);
       await meetingManager.start();
-      // setMeeting(true);
+      setVideoTiles(true);
     } catch (error) {
       console.error("An error occurred:", error);
     }
@@ -55,16 +55,9 @@ const WebinarCreateMeeting = () => {
 
   return (
     <>
-      <div className="ir-ws-webinar-meeting-container">
+      <div className="ir-ws-meeting-container">
         <button onClick={joinMeeting}>Join</button>
-      </div>
-      <div>
-        <VideoTileGrid />
-        <button onClick={toggleVideo}>Toggle video</button>
-        <LocalVideo />
-        <div className="preview-video-container">
-          <PreviewVideo />
-        </div>
+        <Chime videoTiles={videoTiles} />
       </div>
     </>
   );
