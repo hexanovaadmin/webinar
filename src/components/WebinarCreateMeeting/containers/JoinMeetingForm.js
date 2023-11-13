@@ -14,13 +14,14 @@ import "./JoinMeetingForm.scss";
 
 function JoinMeetingForm() {
   const meetingManager = useMeetingManager();
-  const [videoTiles, setVideoTiles] = useState(false);
+  // const [videoTiles, setVideoTiles] = useState(false);
   const [name, setName] = useState("");
+  const { isVideoEnabled } = useLocalVideo();
 
   const url =
     "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/meetings/create";
   const bearerToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk4OTIxODQsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.0ZMoJKOGeCc1q1d3nZVcL0tPxKggGOBRRpduv3CPHsU";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk5MTI1ODcsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.xUzJaTRSj79i4_z9tw3dZtes8looH3zxULCNhg-caHw";
   const date = new Date();
   const formattedDate = date.toLocaleString("en-US", {
     weekday: "short",
@@ -57,7 +58,7 @@ function JoinMeetingForm() {
           );
           await meetingManager.join(meetingSessionConfiguration);
           await meetingManager.start();
-          setVideoTiles(true);
+          // setVideoTiles(true);
         } catch (error) {
           console.error("An error occurred:", error);
         }
@@ -81,9 +82,23 @@ function JoinMeetingForm() {
           {formattedDate}
         </p>
         <div className="ir-ws-webinar-meeting-video-tile-preview">
-          <LocalVideo
+          {isVideoEnabled ? (
+            <LocalVideo
+              style={{ width: "560px", height: "360px", borderRadius: "15px" }}
+            />
+          ) : (
+            <div
+              style={{
+                width: "560px",
+                height: "360px",
+                borderRadius: "15px",
+                background: "#000000",
+              }}
+            ></div>
+          )}
+          {/* <LocalVideo
             style={{ width: "560px", height: "360px", borderRadius: "15px" }}
-          />
+          /> */}
           <div className="ir-ws-audioVideo-control">
             <AudioInputControl />
             <VideoInputControl />
