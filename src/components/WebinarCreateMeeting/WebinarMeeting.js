@@ -4,14 +4,14 @@ import {
   lightTheme,
 } from "amazon-chime-sdk-component-library-react";
 import { ThemeProvider } from "styled-components";
-import WebinarCreateMeeting from "./WebinarCreateMeeting";
+import JoinMeetingForm from "./containers/JoinMeetingForm";
 
 function WebinarMeeting() {
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyles />
       <MeetingProvider>
-        <WebinarCreateMeeting />
+        <JoinMeetingForm />
       </MeetingProvider>
     </ThemeProvider>
   );
