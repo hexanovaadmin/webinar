@@ -1,8 +1,6 @@
 import {
   AudioInputControl,
-  Camera,
   LocalVideo,
-  PreviewVideo,
   VideoInputControl,
   useLocalVideo,
   useMeetingManager,
@@ -11,17 +9,19 @@ import { MeetingSessionConfiguration } from "amazon-chime-sdk-js";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./JoinMeetingForm.scss";
+import PresenterScreen from "./PresenterScreen";
 
 function JoinMeetingForm() {
   const meetingManager = useMeetingManager();
-  // const [videoTiles, setVideoTiles] = useState(false);
+  const [videoTiles, setVideoTiles] = useState(false);
   const [name, setName] = useState("");
   const { isVideoEnabled } = useLocalVideo();
+  const [presenterScreen, setPresenterScreen] = useState(false);
 
   const url =
     "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/meetings/create";
   const bearerToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk5MTI1ODcsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.xUzJaTRSj79i4_z9tw3dZtes8looH3zxULCNhg-caHw";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk5NzUwOTYsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.HWYywWY5yOUNTZtSZhdD2-zDmqamp2msSoPmmNJw9mM";
   const date = new Date();
   const formattedDate = date.toLocaleString("en-US", {
     weekday: "short",
@@ -31,6 +31,10 @@ function JoinMeetingForm() {
     minute: "numeric",
     hour12: true,
   });
+
+  function handleJoin() {
+    setPresenterScreen(true);
+  }
 
   useEffect(
     function () {
@@ -58,7 +62,7 @@ function JoinMeetingForm() {
           );
           await meetingManager.join(meetingSessionConfiguration);
           await meetingManager.start();
-          // setVideoTiles(true);
+          setVideoTiles(true);
         } catch (error) {
           console.error("An error occurred:", error);
         }
@@ -68,51 +72,65 @@ function JoinMeetingForm() {
     [meetingManager]
   );
   return (
-    <div className="ir-ws-webinar-meeting-login-container">
-      <div className="ir-ws-webinar-meeting-logo-container">
-        <img
-          src={require("../../../assets/images/ir4u4.png")}
-          alt="logo"
-          className="ir-ws-webinar-meeting-logo"
-        />
-      </div>
-      <div className="ir-ws-webinar-meeting-preview-container">
-        <p className="ir-ws-webnar-meeting-webinar-name">Webinar Name</p>
-        <p className="ir-ws-webnar-meeting-webinar-time-date">
-          {formattedDate}
-        </p>
-        <div className="ir-ws-webinar-meeting-video-tile-preview">
-          {isVideoEnabled ? (
-            <LocalVideo
-              style={{ width: "560px", height: "360px", borderRadius: "15px" }}
+    <>
+      {presenterScreen && videoTiles ? (
+        <PresenterScreen />
+      ) : (
+        <div className="ir-ws-webinar-meeting-login-container">
+          <div className="ir-ws-webinar-meeting-logo-container">
+            <img
+              src={require("../../../assets/images/ir4u4.png")}
+              alt="logo"
+              className="ir-ws-webinar-meeting-logo"
             />
-          ) : (
-            <div
-              style={{
-                width: "560px",
-                height: "360px",
-                borderRadius: "15px",
-                background: "#000000",
-              }}
-            ></div>
-          )}
-          {/* <LocalVideo
-            style={{ width: "560px", height: "360px", borderRadius: "15px" }}
-          /> */}
-          <div className="ir-ws-audioVideo-control">
-            <AudioInputControl />
-            <VideoInputControl />
+          </div>
+          <div className="ir-ws-webinar-meeting-preview-container">
+            <p className="ir-ws-webnar-meeting-webinar-name">Webinar Name</p>
+            <p className="ir-ws-webnar-meeting-webinar-time-date">
+              {formattedDate}
+            </p>
+            <div className="ir-ws-webinar-meeting-video-tile-preview">
+              {isVideoEnabled ? (
+                <LocalVideo
+                  style={{
+                    width: "560px",
+                    height: "360px",
+                    borderRadius: "15px",
+                  }}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: "560px",
+                    height: "360px",
+                    borderRadius: "15px",
+                    background: "#000000",
+                  }}
+                ></div>
+              )}
+              <div className="ir-ws-audioVideo-control">
+                <AudioInputControl />
+                <VideoInputControl />
+              </div>
+            </div>
+            <p className="ir-ws-webinar-meeting-presenter-name">
+              Presenter Name
+            </p>
+            <input
+              className="ir-ws-webinar-meeting-presenter-name-input"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <button
+              className="ir-ws-webinar-meeting-join-button"
+              onClick={handleJoin}
+            >
+              Join
+            </button>
           </div>
         </div>
-        <p className="ir-ws-webinar-meeting-presenter-name">Presenter Name</p>
-        <input
-          className="ir-ws-webinar-meeting-presenter-name-input"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button className="ir-ws-webinar-meeting-join-button">Join</button>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
