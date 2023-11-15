@@ -2,26 +2,16 @@ import {
   AudioInputControl,
   LocalVideo,
   VideoInputControl,
-  useLocalVideo,
-  useMeetingManager,
 } from "amazon-chime-sdk-component-library-react";
-import { MeetingSessionConfiguration } from "amazon-chime-sdk-js";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./JoinMeetingForm.scss";
 import PresenterScreen from "./PresenterScreen";
+import useJoinMeeting from "./useJoinMeeting";
 
 function JoinMeetingForm() {
-  const meetingManager = useMeetingManager();
-  const [videoTiles, setVideoTiles] = useState(false);
   const [name, setName] = useState("");
-  const { isVideoEnabled } = useLocalVideo();
   const [presenterScreen, setPresenterScreen] = useState(false);
 
-  const url =
-    "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/meetings/create";
-  const bearerToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTk5NzUwOTYsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.HWYywWY5yOUNTZtSZhdD2-zDmqamp2msSoPmmNJw9mM";
   const date = new Date();
   const formattedDate = date.toLocaleString("en-US", {
     weekday: "short",
@@ -33,44 +23,11 @@ function JoinMeetingForm() {
   });
 
   function handleJoin() {
+    if (!name) return;
     setPresenterScreen(true);
   }
 
-  useEffect(
-    function () {
-      async function fetchMeetingData() {
-        try {
-          const response = await axios.post(
-            url,
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${bearerToken}`,
-                "Content-Type": "application/json", // Set the Content-Type header if needed
-              },
-            }
-          );
-          console.log(response);
-          const hostAttendeeDetails = response.data.hostAttendeeDetails;
-          // delete the meeting ID which is present in the host attendee details
-          // delete hostAttendeeDetails.meetingId;
-          const meetingDetails = response.data.meetingDetails;
-          // setAttendeeId(response.data.hostAttendeeDetails.attendeeId);
-          const meetingSessionConfiguration = new MeetingSessionConfiguration(
-            meetingDetails,
-            hostAttendeeDetails
-          );
-          await meetingManager.join(meetingSessionConfiguration);
-          await meetingManager.start();
-          setVideoTiles(true);
-        } catch (error) {
-          console.error("An error occurred:", error);
-        }
-      }
-      fetchMeetingData();
-    },
-    [meetingManager]
-  );
+  const { meetingManager, isVideoEnabled, videoTiles } = useJoinMeeting();
   return (
     <>
       {presenterScreen && videoTiles ? (
@@ -135,24 +92,3 @@ function JoinMeetingForm() {
 }
 
 export default JoinMeetingForm;
-
-// return (
-//   <>
-//     <img src={require("../../../assets/images/ir4u4.png")} alt="logo" />
-//     <div
-//     // className="ir-ws-webinar-meeting-video-tile"
-//     // style={{
-//     //   margin: "20px auto",
-//     //   marginBottom: "20px",
-//     //   width: "830px",
-//     //   height: "450px",
-//     // }}
-//     >
-//       <LocalVideo className="ir-ws-webinar-meeting-video-tile" />
-//       <div className="ir-ws-audioVideo-control">
-//         <AudioInputControl />
-//         <VideoInputControl />
-//       </div>
-//     </div>
-//   </>
-// );

@@ -82,6 +82,11 @@
   background-color: #000;
   border-radius: 10px;
 }
+.ir-ws-webinar-screen-share {
+  width: 100px;
+  height: 50px;
+  background-color: #000;
+}
 .ir-ws-webinar-presenter-meeting-control-container {
   display: flex;
   justify-content: space-between;
@@ -128,11 +133,75 @@
   margin: 0;
   outline: none;
   border: none;
-  height: 400px;
+  height: 200px;
   background-color: #d0ecff;
   padding-inline: 20px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   font-size: 20px;
   resize: none;
+}
+.ir-ws-webinar-presenter-chat-text-box {
+  margin-top: 20px;
+  height: 50px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: #2ba7ff;
+  display: flex;
+  align-items: center;
+}
+.ir-ws-webinar-presenter-chat-text {
+  margin-left: 20px;
+}
+.ir-ws-webinar-presenter-message-box {
+  height: 300px;
+  background-color: #d0ecff;
+  overflow: auto;
+}
+.ir-ws-webinar-presenter-message-input-container {
+  height: 70px;
+  background-color: #d0ecff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+}
+.ir-ws-webinar-presenter-message-input-send-btn-container {
+  display: flex;
+  background-color: #2ba7ff;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  border-radius: 10px;
+  width: 280px;
+  position: absolute;
+  top: 15%;
+  left: 3%;
+}
+.ir-ws-webinar-presenter-message-input {
+  outline: none;
+  border: none;
+  resize: none;
+  height: 30px;
+  width: 245px;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  background-color: #2ba7ff;
+  color: #ffff;
+}
+.ir-ws-webinar-presenter-message-input::placeholder {
+  color: #ffff;
+}
+.ir-ws-webinar-message-send-btn {
+  width: 24px;
+  color: #ffff;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.ir-ws-webinar-sender-message {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
