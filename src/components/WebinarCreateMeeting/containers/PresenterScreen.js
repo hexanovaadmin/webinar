@@ -96,6 +96,9 @@ function PresenterScreen() {
           alt="logo"
           className="ir-ws-webinar-presenter-logo"
         />
+        <p className="ir-ws-webinar-presenter-webinar-name-text">
+          Webinar Name
+        </p>
         <div className="ir-ws-webinar-presenter-logo-pack">
           <p>Recorder</p>
           <span>
@@ -182,6 +185,7 @@ function PresenterScreen() {
             </div>
             <textarea
               type="text"
+              placeholder="Type here"
               className="ir-ws-webinar-presenter-note-input-box"
             />
           </div>
