@@ -97,22 +97,6 @@ function PresenterScreen() {
           className="ir-ws-webinar-presenter-logo"
         />
         <div className="ir-ws-webinar-presenter-logo-pack">
-          <p>Poll</p>
-          <span>
-            <img
-              src={require("../../../assets/images/poll.png")}
-              alt="poll-logo"
-              className="ir-ws-webinar-presenter-poll-logo"
-            />
-          </span>
-          <p>Docs</p>
-          <span>
-            <img
-              src={require("../../../assets/images/docs.png")}
-              alt="poll-logo"
-              className="ir-ws-webinar-presenter-docs-logo"
-            />
-          </span>
           <p>Recorder</p>
           <span>
             <img

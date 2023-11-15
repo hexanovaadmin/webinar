@@ -12,15 +12,7 @@
   align-items: center;
   margin-right: 20px;
 }
-.ir-ws-webinar-presenter-poll-logo {
-  width: 35px;
-  cursor: pointer;
-}
-.ir-ws-webinar-presenter-docs-logo {
-  width: 35px;
-  cursor: pointer;
-  margin-right: 20px;
-}
+
 .ir-ws-webinar-presenter-recorder-logo {
   width: 35px;
   cursor: pointer;
@@ -52,7 +44,7 @@
   height: 50px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  background-color: #2ba7ff;
+  background: linear-gradient(90deg, #31a7ff 0%, #ef68e0 100%);
 }
 .ir-ws-webinar-presenter-participants-number-container p {
   color: #ffff;
@@ -118,7 +110,7 @@
 }
 .ir-ws-webinar-presenter-notes-text-box {
   height: 50px;
-  background-color: #2ba7ff;
+  background: linear-gradient(90deg, #31a7ff 0%, #ef68e0 100%);
   display: flex;
   align-items: center;
   border-top-right-radius: 10px;
@@ -126,6 +118,7 @@
 }
 .ir-ws-webinar-presenter-notes-text {
   margin-left: 20px;
+  color: #ffff;
 }
 
 .ir-ws-webinar-presenter-note-input-box {
@@ -146,12 +139,13 @@
   height: 50px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  background-color: #2ba7ff;
+  background: linear-gradient(90deg, #31a7ff 0%, #ef68e0 100%);
   display: flex;
   align-items: center;
 }
 .ir-ws-webinar-presenter-chat-text {
   margin-left: 20px;
+  color: #ffff;
 }
 .ir-ws-webinar-presenter-message-box {
   height: 300px;
