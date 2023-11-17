@@ -15,7 +15,7 @@ const useJoinMeeting = () => {
   const url =
     "http://bd-webinarservice-lb-staging-958852351.us-east-1.elb.amazonaws.com/api/v1/meetings/create";
   const bearerToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAwNTU0MzEsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ.I2Fmp2XR5Qd4-9Ojbi9Tn54vjhAnxfwiXS6LwRMILL0";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAxNTM2MTAsIlVzZXJuYW1lIjoiYWRtaW4iLCJSb2xlIjpbImFkbWluIiwidXNlciJdfQ._LvisGfcFliSMWOwYp31g-joRKAGmQ-Gstuco_mQ7SM";
 
   useEffect(() => {
     async function fetchMeetingData() {

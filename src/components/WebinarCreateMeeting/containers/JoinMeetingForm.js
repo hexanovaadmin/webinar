@@ -30,7 +30,7 @@ function JoinMeetingForm() {
   const { meetingManager, isVideoEnabled, videoTiles } = useJoinMeeting();
   return (
     <>
-      {presenterScreen && videoTiles ? (
+      {!presenterScreen ? (
         <PresenterScreen />
       ) : (
         <div className="ir-ws-webinar-meeting-login-container">

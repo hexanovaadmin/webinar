@@ -89,7 +89,7 @@ function PresenterScreen() {
   };
 
   return (
-    <div>
+    <div className="ir-ws-webinar-presenter-main-container">
       <div className="ir-ws-webinar-presenter-header">
         <img
           src={require("../../../assets/images/ir4u4.png")}
@@ -113,8 +113,8 @@ function PresenterScreen() {
       <div className="ir-ws-webinar-presenter-main-screen-container">
         <div className="ir-ws-webinar-presenter-participants-box">
           <div className="ir-ws-webinar-presenter-participants-number-container">
-            <p>Participants</p>
-            <p>123</p>
+            <p className="ir-ws-webinar-presenter-text">Participants</p>
+            <p className="ir-ws-webinar-presenter-number-text">123</p>
           </div>
           <div className="ir-ws-webinar-presenter-participants-container">
             {participantsData.map((item, index) => (
@@ -148,12 +148,12 @@ function PresenterScreen() {
             ))}
           </div>
         </div>
-        <div>
+        <div className="ir-ws-webinar-presenter-meeting-container">
           {isVideoEnabled ? (
             <LocalVideo
               style={{
-                width: "800px",
-                height: "500px",
+                width: "100%",
+                height: "55%",
                 borderRadius: "15px",
               }}
             />
@@ -170,7 +170,7 @@ function PresenterScreen() {
           <div className="ir-ws-webinar-presenter-meeting-control-container">
             <div className="ir-ws-webinar-presenter-meeting-control">
               <AudioInputControl />
-              <VideoInputControl />
+              <VideoInputControl style={{ width: "100px" }} />
               <ContentShareControl />
             </div>
             <button className="ir-ws-webinar-presenter-meeting-leave-btn">
@@ -179,7 +179,7 @@ function PresenterScreen() {
           </div>
         </div>
         <div className="ir-ws-webinar-presenter-message-notes-container">
-          <div className="ir-ws-webinar-presenter-notes-container">
+          <div>
             <div className="ir-ws-webinar-presenter-notes-text-box">
               <p className="ir-ws-webinar-presenter-notes-text">Notes</p>
             </div>
@@ -189,6 +189,7 @@ function PresenterScreen() {
               className="ir-ws-webinar-presenter-note-input-box"
             />
           </div>
+
           <div className="ir-ws-webinar-presenter-message-conatiner">
             <div className="ir-ws-webinar-presenter-chat-text-box">
               <p className="ir-ws-webinar-presenter-chat-text">Chat</p>
