@@ -28,6 +28,15 @@ function JoinMeetingForm() {
   }
 
   const { meetingManager, isVideoEnabled, videoTiles } = useJoinMeeting();
+  const buttonStyle = {
+    background: "#d5d5d5",
+    width: "40px",
+    height: "40px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "50%",
+  };
   return (
     <>
       {!presenterScreen ? (
@@ -50,40 +59,44 @@ function JoinMeetingForm() {
               {isVideoEnabled ? (
                 <LocalVideo
                   style={{
-                    width: "560px",
-                    height: "360px",
+                    width: "*0%",
+                    height: "40vh",
                     borderRadius: "15px",
                   }}
                 />
               ) : (
                 <div
+                  className="ir-ws-webinar-meeting-blank-video"
                   style={{
-                    width: "560px",
-                    height: "360px",
+                    width: "90%",
+                    height: "40vh",
                     borderRadius: "15px",
                     background: "#000000",
                   }}
                 ></div>
               )}
+
               <div className="ir-ws-audioVideo-control">
-                <AudioInputControl />
-                <VideoInputControl />
+                <AudioInputControl popOver={null} style={buttonStyle} />
+                <VideoInputControl popOver={null} style={buttonStyle} />
               </div>
             </div>
-            <p className="ir-ws-webinar-meeting-presenter-name">
-              Presenter Name
-            </p>
-            <input
-              className="ir-ws-webinar-meeting-presenter-name-input"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button
-              className="ir-ws-webinar-meeting-join-button"
-              onClick={handleJoin}
-            >
-              Join
-            </button>
+            <div className="ir-ws-webinar-meeting-input-button-container">
+              <p className="ir-ws-webinar-meeting-presenter-name">
+                Presenter Name
+              </p>
+              <input
+                className="ir-ws-webinar-meeting-presenter-name-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <button
+                className="ir-ws-webinar-meeting-join-button"
+                onClick={handleJoin}
+              >
+                Join
+              </button>
+            </div>
           </div>
         </div>
       )}

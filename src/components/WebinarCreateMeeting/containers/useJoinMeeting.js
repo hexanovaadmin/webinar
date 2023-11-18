@@ -48,7 +48,7 @@ const useJoinMeeting = () => {
       }
     }
 
-    fetchMeetingData();
+    // fetchMeetingData();
   }, [meetingManager]);
 
   return { meetingManager, isVideoEnabled, videoTiles, isLocalUserSharing };
