@@ -3,7 +3,7 @@ import "./WebinarAdminWebinarListTab.scss";
 import DeleteWebinarModal from "../WebinarAdminCreateWebinarTab/DeleteWebinarModal";
 import CreateWebinarModal from "../WebinarAdminCreateWebinarTab/CreateWebinarModal";
 
-function WebinarAdminWebinarListTab({ title }) {
+function WebinarAdminWebinarListTab({ title, id }) {
   const webinarlistTab = ["Cancel", "Update", "Transaction"];
   const accordianListButton = [
     "Username",
@@ -141,12 +141,14 @@ function WebinarAdminWebinarListTab({ title }) {
       )}
       {deleteModal && (
         <DeleteWebinarModal
+          id={id}
           deleteModal={deleteModal}
           setDeleteModal={setDeleteModal}
         />
       )}
       {updateModal && (
         <CreateWebinarModal
+          id={id}
           type="Update Webinar"
           updateModal={updateModal}
           setUpdateModal={setUpdateModal}
